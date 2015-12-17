@@ -47,6 +47,7 @@ nltk.usage(nltk.classify.ClassifierI)
 
 featuresets = question.get_featureset()
 
+print "Total len of featuresets : %s" % len(featuresets)
 f_len = int(len(featuresets)*0.05)
 train_set = featuresets[:-f_len]
 test_set = featuresets[-f_len:]
