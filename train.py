@@ -31,14 +31,20 @@ def test_maxent(algorithm,train_set,test_set):
 	print 'Accuracy : ',
 	print nltk.classify.accuracy(classifier, test_set)*100,
 	print '%'
-
+	'''
 	for node in test_set[-5:]:
 		pdist = classifier.prob_classify(node[0])
 		print "prdist:"
-		print pdist
+		samples =  pdist.samples()
+		for sample in samples:
+			print sample
+			print pdist.prob(sample)
+		
+		#for sample in pdist:
+#			print sample
 		print "correct"
 		print node[1]
-	
+	'''
 	print("---Total Used : %s Seconds ---" % (time.time() - start_time))
 	
 	return classifier
@@ -55,7 +61,7 @@ nltk.usage(nltk.classify.ClassifierI)
 featuresets = question.get_featureset()
 
 print "Total len of featuresets : %s" % len(featuresets)
-f_len = int(len(featuresets)*0.10)
+f_len = int(len(featuresets)*0.20)
 train_set = featuresets[f_len:]
 test_set = featuresets[:f_len]
 
