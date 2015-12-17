@@ -30,7 +30,7 @@ def get_featureset():
 		features['QCATEGORY'] = data.attrib['QCATEGORY']
 		#features['QGOLD_YN'] = data.attrib['QGOLD_YN']
 		if data.attrib['QGOLD_YN'] != "Not Applicable":
-			return null
+			return None
 		
 		#features['comments'] = []
 		QSubject = data[0].text.split()
@@ -67,8 +67,10 @@ def get_featureset():
 		return featureset
 		#features['question'] = 
 	for node_question in root:
-		featureset = featureset + gender_features(node_question)
-		
+		try:
+			featureset = featureset + gender_features(node_question)
+		except:
+			pass
 	#print featureset[0:20]
 
 	
