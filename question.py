@@ -28,7 +28,10 @@ def get_featureset():
 		featureset = []
 		features = {}
 		features['QCATEGORY'] = data.attrib['QCATEGORY']
-		features['QGOLD_YN'] = data.attrib['QGOLD_YN']
+		#features['QGOLD_YN'] = data.attrib['QGOLD_YN']
+		if data.attrib['QGOLD_YN'] != "Not Applicable":
+			return null
+		
 		#features['comments'] = []
 		QSubject = data[0].text.split()
 		#features['QSubject'] = tuple(QSubject.text.split())
@@ -52,8 +55,6 @@ def get_featureset():
 				if count_match_dict(CS_word,QSubject) == 1:
 					CSword_num = CSword_num + 1
 					features['CSword(%s)' % CS_word] = 1
-				
-				
 			for CB_word in CBody:
 				if count_match_dict(CB_word,QBody) == 1:
 					CBword_num = CBword_num + 1
