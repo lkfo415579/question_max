@@ -64,6 +64,9 @@ def get_featureset():
 			features['CBword_num'] = CBword_num
 			
 			featureset.append([features,tag])
+			features = {}
+			features['QCATEGORY'] = data.attrib['QCATEGORY']
+			
 		return featureset
 		#features['question'] = 
 	for node_question in root:
@@ -71,7 +74,7 @@ def get_featureset():
 			featureset = featureset + gender_features(node_question)
 		except:
 			pass
-	#print featureset[0:20]
+	print featureset[0:4]
 
 	
 	
