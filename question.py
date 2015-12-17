@@ -51,13 +51,13 @@ def get_featureset():
 			for CS_word in CSubject:
 				if count_match_dict(CS_word,QSubject) == 1:
 					CSword_num = CSword_num + 1
-				features['CSword(%s)' % CS_word] = 1
+					features['CSword(%s)' % CS_word] = 1
 				
 				
 			for CB_word in CBody:
 				if count_match_dict(CB_word,QBody) == 1:
 					CBword_num = CBword_num + 1
-				features['CBword(%s)' % CB_word] = 1
+					features['CBword(%s)' % CB_word] = 1
 				
 			features['CSword_num'] = CSword_num
 			features['CBword_num'] = CBword_num
