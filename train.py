@@ -59,6 +59,8 @@ import nltk
 nltk.usage(nltk.classify.ClassifierI)
 
 featuresets = question.get_featureset()
+import random
+random.shuffle(featuresets)
 
 print "Total len of featuresets : %s" % len(featuresets)
 f_len = int(len(featuresets)*0.10)
