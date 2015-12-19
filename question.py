@@ -1,3 +1,11 @@
+import sys
+try:
+	choice = sys.argv[1]
+	if choice == "1":
+		choice = 1
+except:
+	choice = 1
+print "Type of %s" % choice
 def count_match_dict(target, list):
 	try:
 		#candidate_list = my_dict[source]
@@ -29,8 +37,13 @@ def get_featureset():
 		features = {}
 		features['QCATEGORY'] = data.attrib['QCATEGORY']
 		#features['QGOLD_YN'] = data.attrib['QGOLD_YN']
-		if data.attrib['QGOLD_YN'] != "Not Applicable":
-			return None
+		
+		if choice == 1:
+			if data.attrib['QTYPE'] == "YES_NO":
+				return None
+		else:
+			if data.attrib['QTYPE'] == "GENERAL":
+				return None
 		
 		#features['comments'] = []
 		QSubject = data[0].text.split()
@@ -42,7 +55,12 @@ def get_featureset():
 		del data[0]
 		for node in data:
 			#print node
-			tag = node.attrib['CGOLD']
+			if choice == 1:
+				tag = node.attrib['CGOLD']
+			else:
+				#if node.attrib['CGOLD_YN'] == 'Not Applicable':
+				#	return None
+				tag = node.attrib['CGOLD_YN']
 			CSubject = node[0].text.split()
 			CBody =  node[1].text.split()
 			#features['CSubject'] = tuple(node[0].text.split())
